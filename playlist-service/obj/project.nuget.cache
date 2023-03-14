@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/idsPulQcUzfCC+lFSYcrgoKDJitCWMSVxtlLiQgE7aRLaMlAuJPsn/yR8mf1aFpBnUajzcGKthq2pILOCljPQ==",
+  "dgSpecHash": "Z0dyhQ96ZgJ4/GYtK7y2fYAz4MVqFOyglm3zDSCHT9r0jm7BDZgarSN9KZ0rxIM2OHrxTxEaNj8oaz0EPdNEBg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\billy\\source\\repos\\spotirightfree\\playlist-service\\playlist-service.csproj",
+  "projectFilePath": "C:\\Users\\billy\\source\\repos\\spotirightfree\\playlist-service\\playlist-service\\playlist-service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\billy\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\billy\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
