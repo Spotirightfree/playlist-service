@@ -1,4 +1,4 @@
-using playlist_service.
+using playlist_service.Controllers;
 namespace playlist_service.test
 {
     public class UnitTest1

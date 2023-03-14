@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\playlist-service\playlist-service\playlist-service.csproj" />
+  </ItemGroup>
+
 </Project>
