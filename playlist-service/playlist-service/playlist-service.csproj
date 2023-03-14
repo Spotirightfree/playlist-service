@@ -5,8 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>playlist_service</RootNamespace>
-    <UserSecretsId>556ddc5b-53ad-4208-8a79-8cb8cfb73584</UserSecretsId>
+    <UserSecretsId>f28cbb22-7da8-4156-939c-ac46285316b7</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
