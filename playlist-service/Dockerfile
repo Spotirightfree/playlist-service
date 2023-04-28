@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["playlist-service/playlist-service.csproj", "playlist-service/playlist-service/"]
+COPY ["playlist-service/playlist-service.csproj", "playlist-service/"]
 RUN dotnet restore "playlist-service/playlist-service.csproj"
 COPY . .
 WORKDIR "/src/playlist-service"
