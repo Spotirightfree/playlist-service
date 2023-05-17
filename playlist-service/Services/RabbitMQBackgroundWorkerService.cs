@@ -17,13 +17,13 @@ namespace playlist_service.Services
             await Task.Run(() =>
             {
                 var factory = new ConnectionFactory { HostName = "192.168.240.6" };
-                factory.UserName = "playlist-service";
-                factory.Password = "playlist-service";
+                factory.UserName = "main-service";
+                factory.Password = "main-service";
                 using var connection = factory.CreateConnection();
                 using var channel = connection.CreateModel();
 
-                channel.QueueDeclare(queue: "playlist-service-queue",
-                                     durable: false,
+                channel.QueueDeclare(queue: "playlist-queue",
+                                     durable: true,
                                      exclusive: false,
                                      autoDelete: false,
                                      arguments: null);
@@ -37,7 +37,7 @@ namespace playlist_service.Services
                     var message = Encoding.UTF8.GetString(body);
                     Console.WriteLine($" [x] Received {message}");
                 };
-                channel.BasicConsume(queue: "playlist-service-queue",
+                channel.BasicConsume(queue: "playlist-queue",
                                      autoAck: true,
                                      consumer: consumer);
 

@@ -2,15 +2,14 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 5049
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["playlist-service/playlist-service.csproj", "playlist-service/"]
-RUN dotnet restore "playlist-service/playlist-service.csproj"
+COPY ["playlist-service.csproj", "."]
+RUN dotnet restore "playlist-service.csproj"
 COPY . .
-WORKDIR "/src/playlist-service"
+WORKDIR "/src/."
 RUN dotnet build "playlist-service.csproj" -c Release -o /app/build
 
 FROM build AS publish
@@ -18,5 +17,6 @@ RUN dotnet publish "playlist-service.csproj" -c Release -o /app/publish /p:UseAp
 
 FROM base AS final
 WORKDIR /app
+ENV ASPNETCORE_URLS=http://+:5049
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "playlist-service.dll"]

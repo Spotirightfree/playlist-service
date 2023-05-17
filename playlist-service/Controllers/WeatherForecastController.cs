@@ -15,53 +15,21 @@ namespace playlist_service.Controllers
         }
 
         [HttpPost]
-        [Route("SendMessageMusic")]
+        [Route("SendMessage")]
         public void SendRabbitMessageMusic()
         {
             var factory = new ConnectionFactory { HostName = "192.168.240.6" };
-            factory.UserName = "playlist-service";
-            factory.Password = "playlist-service";
+            factory.UserName = "main-service";
+            factory.Password = "main-service";
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
-            channel.QueueDeclare(queue: "music-service-queue",
-                     durable: false,
-                     exclusive: false,
-                     autoDelete: false,
-                     arguments: null);
 
-            const string message = "Hello World!";
+            const string message = "Hello World from Playlist-Service!";
 
             var body = Encoding.UTF8.GetBytes(message);
 
             channel.BasicPublish(exchange: string.Empty,
-                                 routingKey: "music-service-queue",
-                                 basicProperties: null,
-                                 body: body);
-        }
-
-
-        [HttpPost]
-        [Route("SendMessageLogin")]
-        public void SendRabbitMessageLogin()
-        {
-            var factory = new ConnectionFactory { HostName = "192.168.240.6" };
-            factory.UserName = "playlist-service";
-            factory.Password = "playlist-service";
-            using var connection = factory.CreateConnection();
-            using var channel = connection.CreateModel();
-            channel.QueueDeclare(queue: "login-service-queue",
-                     durable: false,
-                     exclusive: false,
-                     autoDelete: false,
-                     arguments: null);
-
-            const string message = "Hello World!";
-
-            var body = Encoding.UTF8.GetBytes(message);
-
-            channel.BasicPublish(exchange: string.Empty,
-                                 routingKey: "login-service-queue",
-                                 basicProperties: null,
+                                 routingKey: "EventBus",
                                  body: body);
         }
 
