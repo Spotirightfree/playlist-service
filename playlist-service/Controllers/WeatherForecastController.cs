@@ -40,5 +40,12 @@ namespace playlist_service.Controllers
             return "Hello World from Playlist-Service";
         }
 
+        [HttpGet]
+        [Route("CrashPlaylist")]
+        public string CrashPLaylist()
+        {
+            throw new Exception("Whoops! Playlist-service has crashed");
+        }
+
     }
 }

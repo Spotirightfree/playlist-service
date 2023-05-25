@@ -1,3 +1,4 @@
+using playlist_service.Logging;
 using playlist_service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddHostedService<RabbitMQBackgroundWorkerService>();
+//Add Logging
+builder.Logging.AddDbLogger(options =>
+{
+    builder.Configuration.GetSection("Logging")
+    .GetSection("Database").GetSection("Options").Bind(options);
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
